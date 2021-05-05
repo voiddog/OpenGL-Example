@@ -6,6 +6,8 @@
 #define OPENGL_EXAMPLE_GLFRAMERENDER_H
 
 #include <jni.h>
+#include <GLES3/gl3.h>
+#include <memory>
 
 #define INVALID_ID -1
 
@@ -15,7 +17,7 @@ public:
 
     bool initGL();
 
-    uint8_t draw(int width, int height);
+    std::unique_ptr<uint32_t[]> draw(int width, int height);
 
     void destroy();
 
@@ -37,10 +39,11 @@ private:
             "  fragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
             "}\n"
             "";
-    int VBO = INVALID_ID;
-    int FBO = INVALID_ID;
-    int program = INVALID_ID;
-    int matrixLocation = INVALID_ID;
+    GLuint VBO = INVALID_ID;
+    GLuint FBO = INVALID_ID;
+    GLuint program = INVALID_ID;
+    GLint matrixLocation = INVALID_ID;
+    GLuint textureCanvas = INVALID_ID;
 };
 
 

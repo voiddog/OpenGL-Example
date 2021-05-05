@@ -20,5 +20,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+        findViewById<Button>(R.id.btn_native_frame_buffer).setOnClickListener {
+            Intent(this, NativeFrameBufferActivity::class.java).let { intent ->
+                startActivity(intent)
+            }
+        }
     }
 }
